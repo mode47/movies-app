@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Factories;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,12 +16,18 @@ class moviesFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
+
     {
+        $imagePath='C:\Users\hp\movies-app\storage\app/public';
+
         return [
+
             'title' => $this->faker->sentence(),
             'rating' => $this->faker->randomFloat(2, 1, 10),
             'genres' => $this->faker->words(3, true),
             'releaseDate' => $this->faker->date(),
+            'imageUrl' => $this->faker->imageUrl()
+            
         ];
     }
 }

@@ -17,6 +17,9 @@ return new class extends Migration
             $table->decimal('rating', 4, 2);
             $table->string('genres');
             $table->date('releaseDate');
+            $table->string('imageUrl');
+            
+
             $table->timestamps();
         });
     }

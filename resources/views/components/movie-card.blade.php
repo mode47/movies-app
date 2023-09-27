@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="mt-2">
-        <a href="https://movies.andredemos.ca/movies/565770" class="text-lg mt-2 hover:text-gray-300">{{ $movie->titel }}</a>
+        <a href="https://movies.andredemos.ca/movies/565770" class="text-lg mt-2 hover:text-gray-300">{{ $movie->title }}</a>
     </div>
     <div class="flex items-center text-gray-400 text-sm mt-1">
         <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24">
