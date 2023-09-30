@@ -5,12 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
         <!-- Fonts -->
+
+        
+       
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer=""></script>
         <!-- Styles -->
-    </head>
+      
+<style>
+
+</style>
+
     <body class="h-full font-sans bg-gray-900 text-white"" >
 <div class="min-h-full">
-      
+
 <nav class="border-b border-gray-800"">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
@@ -26,23 +34,23 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/Dashboard" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
               <a href="/shows" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">TV shows</a>
-              <a href="movies" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movies</a>
+              <a href="/movies" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movies</a>
               <a href="/Actors" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Actors</a>
-             
+
             </div>
-            
+
           </div>
-        </div>  
+        </div>
         <div class="hidden md:block">
 
           <div class="ml-4 flex items-center md:ml-">
             <div class="relative lg:inline-flex bg-gray-100 rounded-xl" >
-         
-         
+
+
 
             </div>
           <!-- Search -->
-                       
+
                 <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2 ml-10">
                     <form method="GET" action="#">
                         <input type="text" name="search" placeholder=" Something" value="{{request('search')}}"

@@ -1,15 +1,15 @@
-@props(['movie'])
+@props(['movie','genres'])
 <div class="border border-black border-opacity-0 rounded-xl">
 
     <div class="py-6 px-5">
         <div>
-            <a href="https://movies.andredemos.ca/movies/565770">
-                <img src="https://image.tmdb.org/t/p/w500//mXLOHHc1Zeuwsl4xYKjKh2280oL.jpg" alt="Blog Post illustration" class="rounded-xl">
+            <a href="/movies/{{ $movie['id']}}">
+                <img src="{{'https://image.tmdb.org/t/p/w500/'.$movie['poster_path'] }}" alt="Blog Post illustration" class="rounded-xl">
             </a>
         </div>
     </div>
     <div class="mt-2">
-        <a href="https://movies.andredemos.ca/movies/565770" class="text-lg mt-2 hover:text-gray-300">{{ $movie->title }}</a>
+        <a href="https://movies.andredemos.ca/movies/565770" class="text-lg mt-2 hover:text-gray-300">{{ $movie['title']}}</a>
     </div>
     <div class="flex items-center text-gray-400 text-sm mt-1">
         <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24">
@@ -18,9 +18,16 @@
                       data-name="star"></path>
             </g>
         </svg>
-        <span class="ml-1">{{ $movie->rating }}</span>
+        <span class="ml-1">{{ $movie['vote_average']*10 .'100' }}</span>
         <span class="mx-2">|</span>
-        <span>{{ $movie->releaseDate }}</span>
+        <span>{{ $movie['release_date']}}</span>
     </div>
-    <div class="text-gray-400 text-sm">{{ $movie->genres }}</div>
+    <div class="text-gray-400 text-sm">
+        @foreach ($movie['genre_ids'] as $gen )
+      {{  $genres->get($gen)}}
+
+        @endforeach
+
+   </div>
 </div>
+

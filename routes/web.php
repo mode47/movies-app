@@ -20,5 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Home::class,'index']);
 Route::get('movies', [movie::class,'index']);
+Route::get('movies/{movie:id}', [movie::class, 'show']);
+
 Route::get('shows', [shows::class,'index']);
 Route::get('Actors', [Actors::class,'index']);
