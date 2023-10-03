@@ -1,6 +1,6 @@
+
 @props(['movie','genres'])
 <div class="border border-black border-opacity-0 rounded-xl">
-
     <div class="py-6 px-5">
         <div>
             <a href="/movies/{{ $movie['id']}}">
@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="mt-2">
-        <a href="https://movies.andredemos.ca/movies/565770" class="text-lg mt-2 hover:text-gray-300">{{ $movie['title']}}</a>
+        <a href="{{ 'https://movies.andredemos.ca/movies/'.$movie['id'] }}" class="text-lg mt-2 hover:text-gray-300">{{ $movie['title']}}</a>
     </div>
     <div class="flex items-center text-gray-400 text-sm mt-1">
         <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24">
@@ -25,9 +25,7 @@
     <div class="text-gray-400 text-sm">
         @foreach ($movie['genre_ids'] as $gen )
       {{  $genres->get($gen)}}
-
         @endforeach
-
    </div>
 </div>
 

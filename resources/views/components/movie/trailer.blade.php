@@ -9,7 +9,6 @@
                 <span class="ml-2">Play Trailer</span>
             </button>
         </div>
-
         <template x-if="isOpen">
             <div
                 style="background-color: rgba(0, 0, 0, .5);"
