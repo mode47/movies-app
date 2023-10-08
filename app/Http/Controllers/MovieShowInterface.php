@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 interface movieShowInterface
 {
-    public function getPopularMovies();
+    public function getPopularMoviesOrShow();
     public function getGenres();
     public function getNowPlaying();
-    public function getMovie($id);
+    public function topRated();
+    public function getMovieOrShow($id);
+
 }

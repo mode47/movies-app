@@ -10,7 +10,7 @@
 
 <body class="h-full font-sans text-white bg-gray-900"" >
 <div class="min-h-full ">
-    <nav class="border-b border-gray-800 "">
+    <nav class="border-b border-gray-800">
   <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <livewire:navigation-drop-down>
@@ -26,8 +26,7 @@
                   <button type="button"
                     class="relative flex items-center max-w-xs text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                     id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-
-                    <img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/60?u=50" alt="">
+                    <img class="w-10 h-10 rounded-full" src="https://i.pravatar.cc/60?u=120" alt="">
                   </button>
                 </div>
               </div>
@@ -40,5 +39,6 @@
   </div>
   {{ $slot }}
   <livewire:scripts>
+  @yield('scripts')
 
 </html>

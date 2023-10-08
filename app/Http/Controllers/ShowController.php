@@ -2,32 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\movies;
-use Illuminate\Http\Request;
+use App\ViewModels\MovieViewModel;
+use App\Http\Controllers\MovieShowInterface;
+use App\ViewModels\TvshowsViewModel;
 use Illuminate\Support\Facades\Http;
-
 
 class ShowController extends Controller
 {
-        private function getPoplarMovies(){
-        return Http::withToken(config('services.TOKEN_Key.api'))->
-         get('https://api.themoviedb.org/3/tv/popular')->json()['results'];
-     }
+    protected $showDB;
+
+    public function __construct(movieShowInterface $showDB)
+    {
+        $this->showDB = $showDB;
+    }
 
      public function index(){
+
+      
         return view('tvshows.index',[
-            'popularTv'=>$this->getPoplarMovies(),
+            'popularTv'=>$this->showDB->getPopularMoviesOrShow(),
+            'topRated'=>$this->showDB->topRated(),
+            'genres'=>$this->showDB->getGenres(),
+            'trending'=>$this->showDB->getNowPlaying(),
             ]);
         }
 
    public function show($id){
-    $show=Http::withToken(config('services.TOKEN_Key.api'))->
-    get('https://api.themoviedb.org/3/tv/'.$id.'?append_to_response=credits,videos,images')->json();
 
-    dump($show);
     return view('tvshows.show',[
-    'show'=>$show,
+    'show'=>$this->showDB->getMovieOrshow($id),
 
     ]);
+   }
+   private function trending(){
+    return Http::withToken(config('services.TOKEN_Key.api'))->
+    get('https://api.themoviedb.org/3/trending/tv/day')->json()['results'];
    }
         }

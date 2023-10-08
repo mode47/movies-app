@@ -17,10 +17,13 @@
                       data-name="star"></path>
             </g>
         </svg>
-        <span class="ml-1">{{ $show['vote_average']*10 .'100' }}</span>
+        <span class="ml-1">{{ $show['vote_average']*10 .'%' }}</span>
         <span class="mx-2">|</span>
         <span>{{ $show['first_air_date']}}</span>
     </div>
-
+    <div class="text-gray-400 text-sm">
+        @foreach ($show['genre_ids'] as $gen )
+      {{  $genres->get($gen)}}
+        @endforeach
+   </div>
 </div>
-

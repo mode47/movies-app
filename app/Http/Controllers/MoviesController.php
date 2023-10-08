@@ -4,8 +4,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\MovieShowInterface;
-
-
+use App\ViewModels\MovieViewModel;
+use App\ViewModels\MovieShowViewModel;
 class MoviesController extends Controller
 {
     protected $movieDB;
@@ -17,19 +17,29 @@ class MoviesController extends Controller
 
     public function index()
     {
-        return view('movies.index', [
-            'populermovies' => $this->movieDB->getPopularMovies(),
-            'genres' => $this->movieDB->getGenres(),
-            'nowplaying' => $this->movieDB->getNowPlaying(),
-            'type' => 'movie'
+        $viewModel = new MovieViewModel(
+            $this->movieDB->getPopularMoviesOrShow(),
+            $this->movieDB->getGenres(),
+            $this->movieDB->getNowPlaying(),
+            $this->movieDB->topRated(),
+        );
+        return view('movies.index',[
+           'popularMovies'=> $viewModel->PopularMovies(),
+           'genres' => $viewModel->Genres(),
+           'nowPlaying'=>$viewModel->NowPlaying(),
+           'topRated'=>$viewModel->topRated(),
         ]);
+
     }
 
     public function show($id)
     {
-        $movie = $this->movieDB->getMovie($id);
+        $movieShow=new MovieShowViewModel(
+            $this->movieDB->getMovieOrShow($id)
+        );
+
         return view('movies.show', [
-            'movie' => $movie,
+            'movie' => $movieShow->movie(),
         ]);
     }
 }

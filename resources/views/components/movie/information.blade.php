@@ -1,3 +1,4 @@
+
 <h2 class="text-4xl mt-4 md:mt-0 font-semibold">{{ $movie['title'] }}</h2>
 <div class="flex flex-wrap items-center text-gray-400 text-sm">
     <svg class="fill-current text-red-500 w-4" viewBox="0 0 24 24">
@@ -13,9 +14,7 @@
             <spen class="mr-1">{{ $movie['release_date'] }}</spen>
             <spen class="mr-1">|</spen>
             <spen class="mr-1">
-                @foreach ($movie['genres'] as $gen)
-                    {{ $gen['name'] }}
-                @endforeach
+            {{ $movie['genres'] }}
             </spen>
     </div>
 </div>

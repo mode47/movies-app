@@ -5,16 +5,18 @@ use App\Http\Controllers\MovieShowInterface;
 
 class MovieImplementation   implements movieShowInterface
 {
-    
-    public function getPopularMovies()
+
+    private $apiToken='services.TOKEN_Key.api';
+
+    public function getPopularMoviesOrShow()
     {
-         return Http::withToken(config('services.TOKEN_Key.api'))->
-        get('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1')->json()['results'];
+         return Http::withToken(config($this->apiToken))->
+        get('https://api.themoviedb.org/3/movie/popular')->json()['results'];
     }
     public function getGenres()
     {
-        $genersArray=Http::withToken(config('services.TOKEN_Key.api'))->
-        get('https://api.themoviedb.org/3/genre/movie/list?language=en')->json()['genres'];
+        $genersArray=Http::withToken(config($this->apiToken))->
+        get('https://api.themoviedb.org/3/genre/movie/list')->json()['genres'];
          return collect($genersArray)->mapWithKeys(function($genre){
            return [ $genre['id']=>$genre['name']];
         });
@@ -22,14 +24,19 @@ class MovieImplementation   implements movieShowInterface
 
     public function getNowPlaying()
     {
-       return Http::withToken(config('services.TOKEN_Key.api'))->
-        get('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1')->json()['results'];
+       return Http::withToken(config($this->apiToken))->
+        get('https://api.themoviedb.org/3/movie/now_playing')->json()['results'];
     }
 
-    public function getMovie($id)
+    public function getMovieOrShow($id)
     {
-    return Http::withToken(config('services.TOKEN_Key.api'))->
+    return Http::withToken(config($this->apiToken))->
     get('https://api.themoviedb.org/3/movie/'.$id.'?append_to_response=credits,videos,images')->json();
-    
+
     }
-}
+    public function topRated()
+{
+    return Http::withToken(config($this->apiToken))->
+    get('https://api.themoviedb.org/3/movie/top_rated')->json()['results'];
+
+}}

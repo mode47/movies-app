@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\Home;
 use App\Http\Controllers\MoviesController;
-use App\Http\Controllers\shows;
+use App\Http\Controllers\ShowController;
 
-use App\Http\Controllers\Actors;
+
+use App\Http\Controllers\ActorsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Home::class,'index']);
+Route::get('/', [MoviesController::class,'index']);
 Route::get('movies', [MoviesController::class,'index']);
 
 Route::get('movies/{movie:id}', [MoviesController::class, 'show']);
 
-Route::get('shows', [shows::class,'index']);
-Route::get('shows/{show:id}', [shows::class, 'show']);
-Route::get('Actors', [Actors::class,'index']);
+Route::get('shows', [ShowController::class,'index']);
+Route::get('shows/{show:id}', [ShowController::class, 'show']);
+Route::get('Actors', [ActorsController::class,'index']);
+
+Route::get('Actors/page/{page?}', [ActorsController::class,'index']);
+
+Route::get('Actors/Actor/{id}', [ActorsController::class,'show']);
